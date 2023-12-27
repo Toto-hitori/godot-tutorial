@@ -7,7 +7,7 @@ func _ready():
 		print(i)
 
 func _process(delta):
-	$Logo.rotation_degrees += 10
+	$Logo.rotation_degrees += 60*delta
 	
 	#flow -> if rotation > 180 -> 0
 	if $Logo.rotation_degrees > 180: 
