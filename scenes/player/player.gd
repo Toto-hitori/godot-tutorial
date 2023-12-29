@@ -1,8 +1,8 @@
 extends CharacterBody2D
 var can_laser : bool = true
 var can_grenade : bool = true
-signal laser
-signal grenade
+signal laser(position)
+signal grenade(position)
 func _process(_delta):
 	var direction = Input.get_vector("Left","Right","Up","Down")
 	velocity = direction  * 500
@@ -19,11 +19,17 @@ func _on_timer_grenade_timeout():
 	can_grenade = true
 
 func shoot_laser():
-	laser.emit()
+	var spawn_pos = choose_spawn_position()
 	can_laser = false
 	$TimerLaser.start()
+	laser.emit(spawn_pos)
 
 func throw_grenade():
-	grenade.emit()
+	var grenade_pos = $GrenadeStartPos.global_position
 	can_grenade = false
 	$GrenadeTimer.start()
+	grenade.emit(grenade_pos)
+
+func choose_spawn_position() -> Vector2:
+	var laser_markers = $LaserStartPositions.get_children()
+	return laser_markers.pick_random().global_position
