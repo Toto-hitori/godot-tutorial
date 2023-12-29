@@ -8,12 +8,15 @@ func _on_gate_player_entered_gate(body):
 	print(body)
 
 
-func _on_player_laser(position):
-	var laser = laser_scene.instantiate()
-	laser.position = position
+func _on_player_laser(position,direction):
+	var laser = laser_scene.instantiate() as Area2D
+	laser.position = position 
+	laser.rotation = direction.angle()
+	laser.direction = direction
 	$Projectiles.add_child(laser)
 
-func _on_player_grenade(position):
-	var grenade = grenade_scene.instantiate()
+func _on_player_grenade(position,direction):
+	var grenade : RigidBody2D = grenade_scene.instantiate() as RigidBody2D
 	grenade.position = position
+	grenade.linear_velocity = direction * grenade.speed
 	$Projectiles.add_child(grenade)
