@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2kfnl0tybmoc"]
+[gd_scene load_steps=13 format=3 uid="uid://b2kfnl0tybmoc"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_1g4xm"]
 [ext_resource type="Texture2D" uid="uid://wvnq82hqa0lg" path="res://graphics/ground/stones.png" id="2_olq0t"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://clw4l4bvo2nhr" path="res://graphics/tilesets/outside_walls.png" id="4_tk01i"]
 [ext_resource type="Texture2D" uid="uid://c7shvj3xlt2y8" path="res://graphics/tilesets/soil.png" id="5_khobb"]
 [ext_resource type="PackedScene" uid="uid://bx4yaqii8d28t" path="res://scenes/houses/house.tscn" id="6_dguiu"]
+[ext_resource type="PackedScene" uid="uid://dd7njk8x7evxu" path="res://scenes/objects/steam_vent.tscn" id="9_yiy4r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4udd"]
 resource_name = "walls"
@@ -87,6 +88,9 @@ zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
 [node name="Gate" parent="." instance=ExtResource("3_bftj8")]
+
+[node name="SteamVent" parent="." instance=ExtResource("9_yiy4r")]
+position = Vector2(2202, 713)
 
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]

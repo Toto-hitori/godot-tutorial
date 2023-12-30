@@ -28,6 +28,7 @@ func shoot_laser():
 	var player_direction = (get_global_mouse_position() - position).normalized()
 	can_laser = false
 	$TimerLaser.start()
+	$GunParticles.emitting = true
 	laser.emit(spawn_pos, player_direction)
 	
 func throw_grenade():

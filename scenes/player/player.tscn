@@ -1,7 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://0h66xx3elhvj"]
+[gd_scene load_steps=10 format=3 uid="uid://0h66xx3elhvj"]
 
 [ext_resource type="Texture2D" uid="uid://2n5mfldwcme8" path="res://graphics/player/player.png" id="1_dfiar"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_gft7v"]
+[ext_resource type="Texture2D" uid="uid://tut6hhfn8ol3" path="res://graphics/decals/white.png" id="2_c22yc"]
+
+[sub_resource type="Gradient" id="Gradient_866jd"]
+offsets = PackedFloat32Array(0, 0.734127, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.721569, 0.929412, 0.933333, 0.466667, 0, 0.752941, 0.752941, 0.427451)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hj6ou"]
+gradient = SubResource("Gradient_866jd")
+
+[sub_resource type="Curve" id="Curve_1wj04"]
+_data = [Vector2(0.00706714, 0.190909), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7xyn1"]
+curve = SubResource("Curve_1wj04")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h74w2"]
+lifetime_randomness = 0.34
+emission_shape = 1
+emission_sphere_radius = 34.69
+particle_flag_disable_z = true
+spread = 15.93
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 751.63
+initial_velocity_max = 1000.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_7xyn1")
+color_ramp = SubResource("GradientTexture1D_hj6ou")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6fn8o"]
 radius = 59.6825
@@ -9,6 +40,15 @@ radius = 59.6825
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
 script = ExtResource("1_gft7v")
+
+[node name="GunParticles" type="GPUParticles2D" parent="."]
+position = Vector2(141, 23)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_h74w2")
+texture = ExtResource("2_c22yc")
+lifetime = 0.1
+one_shot = true
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
 position = Vector2(39, 1)
