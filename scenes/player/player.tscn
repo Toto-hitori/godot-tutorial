@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0h66xx3elhvj"]
+[gd_scene load_steps=11 format=3 uid="uid://0h66xx3elhvj"]
 
 [ext_resource type="Texture2D" uid="uid://2n5mfldwcme8" path="res://graphics/player/player.png" id="1_dfiar"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_gft7v"]
@@ -36,6 +36,9 @@ color_ramp = SubResource("GradientTexture1D_hj6ou")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6fn8o"]
 radius = 59.6825
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_144y7"]
+polygon = PackedVector2Array(-33, 51, -40, 34, -48, 29, -51, 21, -48, 15, -56, 11, -57, -7, -57, -24, -50, -29, -50, -36, -33, -46, -26, -46, -13, -56, -11, -53, 7, -59, 12, -58, 28, -59, 37, -48, 46, -40, 52, -27, 76, -11, 92, -9, 115, 1, 134, 10, 136, 24, 130, 34, 122, 39, 110, 37, 99, 47, 96, 53, 65, 55, 60, 44, 49, 41, 16, 54, -12, 61)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
@@ -79,6 +82,9 @@ position = Vector2(132, 20)
 
 [node name="GrenadeStartPos" type="Marker2D" parent="."]
 position = Vector2(100, 19)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_144y7")
 
 [connection signal="timeout" from="TimerLaser" to="." method="_on_timer_laser_timeout"]
 [connection signal="timeout" from="GrenadeTimer" to="." method="_on_timer_grenade_timeout"]
