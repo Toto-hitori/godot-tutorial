@@ -86,11 +86,12 @@ position = Vector2(-479, 1301)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_qscnp")]
-position = Vector2(681, 318)
+position = Vector2(665, 334)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
+metadata/_edit_lock_ = true
 
 [node name="Gate" parent="." instance=ExtResource("3_bftj8")]
 metadata/_edit_lock_ = true
@@ -103,6 +104,8 @@ color = Color(0.180392, 0.121569, 0.537255, 1)
 blend_mode = 1
 metadata/_edit_lock_ = true
 
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
