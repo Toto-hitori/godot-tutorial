@@ -27,3 +27,10 @@ shape = SubResource("CapsuleShape2D_vq32g")
 position = Vector2(76, 1)
 color = Color(0, 0.890196, 0.890196, 1)
 texture = ExtResource("3_cc2ji")
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_timer_timeout"]

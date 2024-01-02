@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot-tutorial"
-run/main_scene="res://scenes/levels/level.tscn"
+run/main_scene="res://scenes/levels/outside.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 

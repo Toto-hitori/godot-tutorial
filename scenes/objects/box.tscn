@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d7gexdxyf84f"]
+[gd_scene load_steps=5 format=3 uid="uid://d7gexdxyf84f"]
 
-[ext_resource type="Texture2D" uid="uid://dcbldfrgc63gm" path="res://graphics/objects/Box.png" id="1_58cxx"]
+[ext_resource type="PackedScene" uid="uid://5jlejl5o1avr" path="res://scenes/objects/item_container_scene.tscn" id="1_bp8v5"]
+[ext_resource type="Script" path="res://box.gd" id="2_usddu"]
+[ext_resource type="Texture2D" uid="uid://dcbldfrgc63gm" path="res://graphics/objects/Box.png" id="3_tpywm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lvg1"]
-size = Vector2(353, 254)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn4fa"]
+size = Vector2(356, 256)
 
-[node name="Box" type="StaticBody2D"]
-collision_layer = 4
-collision_mask = 11
+[node name="Box" instance=ExtResource("1_bp8v5")]
+script = ExtResource("2_usddu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_58cxx")
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_tpywm")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 3)
-shape = SubResource("RectangleShape2D_5lvg1")
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_wn4fa")
