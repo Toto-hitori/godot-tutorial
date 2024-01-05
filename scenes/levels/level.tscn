@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2kfnl0tybmoc"]
+[gd_scene load_steps=5 format=3 uid="uid://b2kfnl0tybmoc"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_1g4xm"]
+[ext_resource type="Script" path="res://scenes/input.gd" id="3_imc8b"]
 [ext_resource type="PackedScene" uid="uid://0h66xx3elhvj" path="res://scenes/player/player.tscn" id="3_qscnp"]
+[ext_resource type="PackedScene" uid="uid://dd4sr3uhhp6og" path="res://scenes/ui/canvas_layer.tscn" id="4_negww"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1g4xm")
@@ -19,5 +21,13 @@ zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 metadata/_edit_lock_ = true
 
+[node name="InputSystem" type="Node" parent="."]
+script = ExtResource("3_imc8b")
+
+[node name="CanvasLayer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_negww")]
+player = NodePath("../Player")
+
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
 [connection signal="laser" from="Player" to="." method="_on_player_laser"]
+[connection signal="shoot_gun" from="InputSystem" to="Player" method="_on_input_system_shoot_gun"]
+[connection signal="throw_grenade" from="InputSystem" to="Player" method="_on_input_system_throw_grenade"]

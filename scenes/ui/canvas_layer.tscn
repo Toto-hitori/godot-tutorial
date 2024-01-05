@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd4sr3uhhp6og"]
+
+[ext_resource type="Texture2D" uid="uid://bx608q6dmm31d" path="res://graphics/ui/bullet.png" id="1_1dk3f"]
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_ices2"]
+[ext_resource type="Texture2D" uid="uid://qvpnvhxqdj5t" path="res://graphics/ui/grenade.png" id="2_10wv8"]
+[ext_resource type="Theme" uid="uid://dec8lml22qf1f" path="res://scenes/ui/font.tres" id="2_l2glc"]
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("laser_label", "grenade_label")]
+script = ExtResource("1_ices2")
+laser_label = NodePath("LaserCounter/VBoxContainer/LaserLabel")
+grenade_label = NodePath("LaserCounter/VBoxContainer2/Grenade")
+
+[node name="LaserCounter" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.04
+anchor_top = 0.94
+anchor_right = 0.1
+anchor_bottom = 1.0
+offset_left = -0.199997
+offset_top = -39.8
+offset_right = 34.2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LaserCounter"]
+layout_mode = 2
+offset_right = 38.0
+offset_bottom = 83.0
+
+[node name="LaserLabel" type="Label" parent="LaserCounter/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_l2glc")
+text = "20"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="LaserCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_1dk3f")
+expand_mode = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LaserCounter"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 38.0
+offset_bottom = 83.0
+
+[node name="Grenade" type="Label" parent="LaserCounter/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("2_l2glc")
+text = "20"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="LaserCounter/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_10wv8")
+expand_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.97
+anchor_right = 0.7
+anchor_bottom = 0.99
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 30
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+value = 50.0
